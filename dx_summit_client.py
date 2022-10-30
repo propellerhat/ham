@@ -6,16 +6,10 @@ class DXSummitClient:
 	spots_endpoint = '/api/v1/spots'
 
 	def __init__(self):
-		self.spots = []
-		self.refresh_spots()
+		pass
 
-	def refresh_spots(self):
+	def fetch_spots(self):
 		r = requests.get('http://{}{}'.format(self.host, self.spots_endpoint))
 		if r.status_code != 200:
 			print('Something went wrong fetching spots.')
-			quit()
-		self.spots = r.json()
-
-if __name__ == "__main__":
-	dxs = DXSummitClient()
-	print(dxs.spots)
+		return r.json()
